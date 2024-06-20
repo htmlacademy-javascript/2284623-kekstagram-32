@@ -42,10 +42,14 @@ function findNumbers2 (string) {
   string = string.toString();
   let integer = '';
   for (let i = 0; i < string.length; i++) {
-    if (!Number.isNaN(parseInt(string[i]))) {
+    if (!Number.isNaN(parseInt(string[i], 10))) {
       integer += string[i];
     }
   }
   return integer.length === 0 ? NaN : +integer;
 }
-console.log(findNumbers2('1 кефир, 0.5 батона'));
+checkStringLength();
+isStringPalindrome1();
+isStringPalindrome2();
+findNumbers();
+findNumbers2();
