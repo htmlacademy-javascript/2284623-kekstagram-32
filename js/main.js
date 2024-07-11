@@ -37,7 +37,7 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
-const getConsecutiveNumbers = (start) => {
+const makeConsecutiveNumbersGenerator = (start) => {
   let currentNumber = start;
   return () => currentNumber++;
 };
@@ -45,33 +45,34 @@ const getConsecutiveNumbers = (start) => {
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 const getRandomTextComments = (elements) => {
-  const textCount = getRandomPositiveInteger(0, 1);
-  if (!textCount) {
-    return elements[getRandomPositiveInteger(0, elements.length - 1)];
+  const textCount = getRandomPositiveInteger(1, 2);
+  if (textCount === 1) {
+    return getRandomArrayElement(elements);
   }
-  const commentText = `${elements[getRandomPositiveInteger(0, elements.length - 1)]} ${elements[getRandomPositiveInteger(0, elements.length - 1)]}`;
+  const commentText = `${getRandomArrayElement(elements)} ${getRandomArrayElement(elements)}`;
   return commentText;
 };
 
 const getRandomIdGenerator = (min, max) => {
-  const previousValues = [];
+  const allValues = [];
+  for (let i = min; i <= max; i++) {
+    allValues.push(i);
+  }
 
   return function () {
-    let currentValue = getRandomPositiveInteger(min, max);
-    if (previousValues.length >= (max - min + 1)) {
+    if (!allValues) {
       return null;
     }
-    while (previousValues.includes(currentValue)) {
-      currentValue = getRandomPositiveInteger(min, max);
-    }
-    previousValues.push(currentValue);
+    const currentValue = getRandomArrayElement(allValues);
+    const currentIndex = allValues.indexOf(currentValue);
+    allValues.splice(currentIndex, 1);
     return currentValue;
   };
 };
 
 const generateUrlId = getRandomIdGenerator(1, DESCRIPTION_COUNT);
-const createCommentId = getConsecutiveNumbers(1);
-const createFotoId = getConsecutiveNumbers(1);
+const createCommentId = makeConsecutiveNumbersGenerator(1);
+const createFotoId = makeConsecutiveNumbersGenerator(1);
 
 const createComment = () => ({
   id: createCommentId(),
