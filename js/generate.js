@@ -31,8 +31,8 @@ const getRandomIdGenerator = (min, max) => {
     if (allValues.length === 0) {
       return null;
     }
-    const currentValue = getRandomArrayElement(allValues);
-    const currentIndex = allValues.indexOf(currentValue);
+    const currentIndex = getRandomPositiveInteger(0, allValues.length - 1);
+    const currentValue = allValues[currentIndex];
     allValues.splice(currentIndex, 1);
     return currentValue;
   };

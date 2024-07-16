@@ -1,1 +1,1 @@
-import './miniature.js';
+import { similarFotos } from './miniature.js';
