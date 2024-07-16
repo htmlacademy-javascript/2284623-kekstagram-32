@@ -28,7 +28,7 @@ const getRandomIdGenerator = (min, max) => {
   }
 
   return function () {
-    if (!allValues) {
+    if (allValues.length === 0) {
       return null;
     }
     const currentValue = getRandomArrayElement(allValues);
