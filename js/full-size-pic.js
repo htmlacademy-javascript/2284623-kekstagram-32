@@ -76,7 +76,7 @@ function onPicClick (evt) {
   }
 }
 
-// //Функция по добавлению комментариев из массива комментариев по кнопке (используется копия оригинального)
+// //Функция по добавлению комментариев из массива комментариев по кнопке (используется копия оригинального). Второе задание
 function addComments () {
   const addingComments = partCommentsArray.splice(0, 5);
   addingComments.forEach((comment) => {
