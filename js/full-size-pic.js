@@ -43,7 +43,7 @@ const onFullPicCancel = () => {
 function openUserModal () {
   commentsLoader.addEventListener ('click', addComments);
   fullPictureContainer.classList.remove('hidden');
-  document.body.classList.remove('modal-open');
+  document.body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
   fullPicCancel.addEventListener('click', onFullPicCancel);
   otherPicContainer.removeEventListener('click', onPicClick);
