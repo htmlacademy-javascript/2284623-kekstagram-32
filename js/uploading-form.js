@@ -71,7 +71,7 @@ function onHashtagBlur () {
 const pristine = new Pristine(uploadingImgForm);
 const validateComment = (value) => value.length < 10;
 const validateHashtag = (value) => {
-  const hashtagsArray = value.trim().split(' ');
+  const hashtagsArray = value.trim().toLowerCase().split(' ');
   if (hashtagsArray.length > 5) {
     return false;
   }
@@ -101,3 +101,4 @@ uploadingImgForm.addEventListener('submit', (evt) => {
     uploadingImgForm.submit();
   }
 });
+
