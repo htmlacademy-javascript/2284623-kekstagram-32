@@ -1,8 +1,4 @@
 import {scaleValue, imgPreview} from './uploading-form';
-// const scaleSmallerButton = imgUploadOverlay.querySelector('.scale__control--smaller');
-// const scaleBiggerButton = imgUploadOverlay.querySelector('.scale__control--bigger');
-// const scaleValue = imgUploadOverlay.querySelector('.scale__control--value');
-// const imgPreview = imgUploadOverlay.querySelector('.img-upload__preview img');
 
 function doImgSmaller () {
   if (parseInt(scaleValue.value, 10) !== 25) {
