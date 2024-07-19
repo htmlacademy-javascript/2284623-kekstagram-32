@@ -1,3 +1,4 @@
+import {scaleSmallerButton, scaleBiggerButton, doImgSmaller, doImgBigger, setDefaultSizeImg} from './editing-image.js';
 const uploadingImgForm = document.querySelector('.img-upload__form');
 const uploadControl = uploadingImgForm.querySelector('.img-upload__input');
 const imgUploadOverlay = uploadingImgForm.querySelector('.img-upload__overlay');
@@ -24,6 +25,8 @@ function openUploadingModal () {
   uploadControl.removeEventListener('change', openUploadingModal);
   userImgComment.addEventListener('focus', onCommentFocus);
   userImgHashtags.addEventListener('focus', onHashtagFocus);
+  scaleSmallerButton.addEventListener('click', doImgSmaller);
+  scaleBiggerButton.addEventListener('click', doImgBigger);
 }
 
 function closeUploadingModal () {
@@ -36,6 +39,9 @@ function closeUploadingModal () {
   userImgHashtags.removeEventListener('focus', onHashtagFocus);
   userImgHashtags.removeEventListener('blur', onHashtagBlur);
   uploadControl.addEventListener('change', openUploadingModal);
+  scaleSmallerButton.removeEventListener('click', doImgSmaller);
+  scaleBiggerButton.removeEventListener('click', doImgBigger);
+  setDefaultSizeImg();
   uploadControl.value = '';
   userImgComment.value = '';
   userImgHashtags.value = '';
@@ -67,4 +73,4 @@ function onHashtagBlur () {
   userImgHashtags.removeEventListener('blur', onCommentBlur);
 }
 
-export {userImgComment, userImgHashtags, uploadingImgForm};
+export {userImgComment, userImgHashtags, uploadingImgForm, imgUploadOverlay};
